@@ -13,6 +13,7 @@
                         <h5 class="card-title">{{ product.name }}</h5>
                         <a href="{% url "webapp:product_detail" product.pk %}" class="btn btn-primary m-2">Посмотреть</a>
                         <a href="{% url "webapp:product_update" product.pk %}" class="btn btn-primary m-2">Изменить</a>
+                        <a href="{% url "webapp:delete" product.pk %}" class="btn btn-primary m-2">Удалить</a>
                     </div>
                 </div>
             </div>
