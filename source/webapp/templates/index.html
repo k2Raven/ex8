@@ -9,12 +9,9 @@
         {% for product in product_list %}
             <div class="col col-3">
                 <div class="card">
-                    {% if product.photo %}
-                        <img src="{{ product.photo.url }}" class="card-img-top" alt="{{ product.name }}">
-                    {% endif %}
                     <div class="card-body">
                         <h5 class="card-title">{{ product.name }}</h5>
-                        <a href="#" class="btn btn-primary">Посмотреть</a>
+                        <a href="{% url "webapp:product_detail" product.pk %}" class="btn btn-primary">Посмотреть</a>
                     </div>
                 </div>
             </div>
