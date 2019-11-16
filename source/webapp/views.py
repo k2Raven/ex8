@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from webapp.models import Product
+from webapp.models import Product, Review
 
 
 class IndexView(ListView):
@@ -13,6 +13,13 @@ class IndexView(ListView):
 class ProductView(DetailView):
     model = Product
     template_name = 'product/detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        product = self.object
+        review = Review.objects.filter(product_id=product.pk)
+        context['reviews'] = review
+        return context
 
 
 class ProductCreateView(CreateView):

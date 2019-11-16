@@ -18,4 +18,28 @@
         <a href="{% url "webapp:product_update" product.pk %}" class="btn btn-primary m-2">Изменить</a>
         <a href="{% url "webapp:delete" product.pk %}" class="btn btn-primary m-2">Удалить</a>
     </div>
+    {% for review in reviews %}
+        <div class="card m-2">
+            <div class="card-header">
+                {{ review.user }}
+            </div>
+
+            <div class="card-body">
+                <p class="card-text">Товар: {{ review.product }}</p>
+                <p class="card-text">Отзыв: {{ review.text_review }}</p>
+                <p class="card-text">Оценка: {{ review.rating }}</p>
+                <div class="form-row align-items-center">
+                    <div class="col-auto my-1">
+                        <form><a href="#" class="btn btn-primary">Удаление</a></form>
+                    </div>
+                    <div class="col-auto my-1">
+                        <form><a href="#" class="btn btn-primary">Редаклирование</a></form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {% empty %}
+        <p>Нет отзывов</p>
+    {% endfor %}
 {% endblock %}
