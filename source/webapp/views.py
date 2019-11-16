@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from webapp.forms import ReviewForm
 
 from webapp.models import Product, Review
 
@@ -45,3 +46,14 @@ class ProductDeleteView(DeleteView):
     context_object_name = 'product'
     success_url = reverse_lazy('webapp:index')
 
+
+class ReviewCreateView(CreateView):
+    template_name = 'product/create_review.html'
+    form_class = ReviewForm
+
+    def form_valid(self, form):
+        user = self.request.user
+        product_pk = self.kwargs.get('pk')
+        product = get_object_or_404(Product, pk=product_pk)
+        product.products.create(user=user, **form.cleaned_data)
+        return redirect('webapp:product_detail', pk=product_pk)
