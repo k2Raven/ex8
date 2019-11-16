@@ -57,3 +57,13 @@ class ReviewCreateView(CreateView):
         product = get_object_or_404(Product, pk=product_pk)
         product.products.create(user=user, **form.cleaned_data)
         return redirect('webapp:product_detail', pk=product_pk)
+
+
+class ReviewUpdateView(UpdateView):
+    model = Review
+    template_name = 'product/update_review.html'
+    form_class = ReviewForm
+    context_object_name = 'review'
+
+    def get_success_url(self):
+        return reverse('webapp:product_detail', kwargs={'pk': self.object.pk})
