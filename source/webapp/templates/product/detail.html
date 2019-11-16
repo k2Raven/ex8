@@ -10,5 +10,6 @@
         </div>
         <p><b>Категория:</b> {{ product.get_category_display }}</p>
         <p><b>Описание:</b> {{ product.description}}</p>
+        <a href="{% url "webapp:product_update" product.pk %}" class="btn btn-primary m-2">Изменить</a>
     </div>
 {% endblock %}
