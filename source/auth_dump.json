@@ -1,0 +1,20 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$yDqXRmv65hnZ$QDRG2N00OC7RBIHgqeuVOxDnZmlt92ivjFMzJPrBbhI=",
+    "last_login": "2019-11-16T12:38:57Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "Aleksei",
+    "last_name": "Kuzmin",
+    "email": "leha.21.05.1996@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2019-11-16T12:39:01Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
